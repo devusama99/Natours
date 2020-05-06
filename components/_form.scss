@@ -1,0 +1,146 @@
+.form
+{
+    &__input
+    {
+        padding: 0.3rem 0.7rem;
+        font-size: 1.4rem;
+        outline: transparent;
+        background: transparent;
+        // background-color: rgba($light-color, 0.5);
+        // border-radius:5px ;
+        border: none;
+        width: 70%;
+        height: 3rem;
+        color: rgba($dark-color, 0.7);
+        border-bottom: solid 2px rgba($dark-color, 0.3);
+        transition: all 0.3s ease-in-out;
+
+        @include respond(tab-p)
+        {
+            width: 100%;
+        }
+
+        &:focus:invalid
+        {
+            border-bottom: solid 2px rgba(red, 0.7); 
+        }
+        &:valid
+        {
+            border-bottom: solid 2px rgba($primary-color, 0.7);            
+        }
+        &:required
+        {
+            box-shadow: none;
+        }
+        
+    }
+    &__label
+    {
+        padding: 0.3rem 0.7rem;
+        font-size: 1.6rem;
+        transform: translateY(-200%);
+        transition: all 0.3s ;
+        color: $primary-color;
+        font-weight: 600;
+    }
+    &__group
+    {
+        &:not(:last-child)
+        {
+            margin-bottom: 2rem;
+
+            @include respond(tab-p)
+            {
+                margin-bottom: 1rem;
+            }
+        }
+        &>*
+        {
+             display: block;
+        }
+       
+    }
+
+    &__input:placeholder-shown + &__label
+    {
+        transform: translateY(-100%);
+        color: rgba($dark-color, 0.6);
+    }
+    &__radio-group
+    {
+        width: 100%;
+
+    }
+    &__radio-label
+    {
+        font-size:1.6rem ;
+        color: rgba($dark-color, 0.6);
+        margin-right: 6rem;
+        padding: 0 0 0 3rem;
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        transition: all0.4s;
+
+        @include respond(tab-p)
+        {
+            margin-right: 4rem;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+    }
+    &__radio-btn
+    {
+        width:2rem;
+        height: 2rem;
+        border: solid 3px $primary-color;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        line-height: 1;
+        left: 0;
+        bottom: 0;
+        
+        &::before
+        {
+            content:'';
+            position: absolute;
+            line-height: 1;
+            left: 50%;
+            bottom: 50%;
+            height: 2rem;
+            width: 2rem;
+            background: radial-gradient(1rem,rgba($primary-color,0.3),rgba($primary-color,1));
+            border-radius: 50%;
+            backface-visibility: hidden;
+            opacity: 0;
+            transform: translate(-50% , 50%);
+            transition: 0.2s all ;
+            
+        }
+    }
+    &__radio-input
+    {
+        pointer-events: none;
+        display: none;
+    }
+    &__radio-input:checked + &__radio-label > &__radio-btn::before
+    {
+        opacity: 1;
+    } 
+    &__radio-input:checked + &__radio-label 
+    {
+        color: $primary-color;
+    } 
+    .btn
+    {
+        @include respond(tab-p)
+        {
+            transform: scale(0.6) translateX(-6rem);
+            margin-top: 2rem !important;
+        }
+    }
+  
+    
+}

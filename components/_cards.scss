@@ -1,0 +1,229 @@
+.card
+{
+    
+    -moz-perspective: 150rem;
+    -ms-perspective: 150rem;
+    perspective: 150rem;
+    height: 50rem;
+    position: relative;
+
+    @include touch
+    {
+        height: auto;
+        background: $light-color;
+        border-radius:10px ;
+        overflow: hidden;
+        box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.2);
+    }
+   
+    &__side
+    {
+        position: absolute;
+        border-radius:10px ;
+        overflow: hidden;
+        box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.2);
+        top: 0;
+        left: 0;
+        transition: all 0.4s linear;
+        width: 100%;
+        backface-visibility: hidden;
+        
+        @include touch
+        {
+            position: relative;
+            box-shadow: none;
+            border-radius:0px ;
+        }
+
+        &--front            
+        {
+            position: relative;
+            background: $light-color;
+            height: 100%;
+            @include touch
+            {
+                z-index: 1;
+            }
+            
+        }
+        &--back
+        {            
+            transform: rotateY(180deg);
+            height: 100%;
+
+            @include touch
+            {
+                transform: rotate(0) ;
+                height: 26rem;
+                z-index: 2;
+                clip-path: polygon(0% 10% , 100% 0% , 100% 100% , 0% 100%);
+            }
+            
+            &--2
+            {
+                background-color: rgba(1,150,21,0.7);
+                background:linear-gradient( to left top, rgba(198,239,146,0.7),  rgba(84, 122, 89,0.7) );
+            }
+            &--3
+            {
+                background-color: rgba(#FFE53B,0.7);               
+                background:linear-gradient( to left top, rgba(#FFE53B,0.7),  rgba(#FF2525,0.7) );              
+            } 
+            &--1
+            {
+                background-color: rgba(0,201,235,0.7);
+                background:linear-gradient( to left top, rgba(0,201,235,0.7),  rgba(145,0,228,0.7) );
+            }
+        }
+
+    }
+        
+    &:hover &__side--front
+    {
+        transform: rotateY(-180deg);
+
+        @include touch
+        {
+            transform: rotateY(0);
+        }
+    }
+    &:hover &__side--back
+    {
+        transform: rotateY(0deg) ;
+        @include touch
+        {
+            transform: translate(0);
+        }
+    }
+
+}
+
+// style front side
+.content-front-card
+{
+    .card__picture
+    {
+        background: bottom right/cover;
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0 , 100% 0 ,100% 90% ,0% 100%);
+        -moz-clip-path: polygon(0 0 , 100% 0 ,100% 90% ,0% 100%);
+        -ms-clip-path: polygon(0 0 , 100% 0 ,100% 90% ,0% 100%);
+        clip-path: polygon(0 0 , 100% 0 ,100% 90% ,0% 100%);
+        height: 23rem;
+        z-index: 1;
+        &--2
+        {
+            background:linear-gradient( to left top, rgba(198,239,146,1),  rgba(84, 122, 89,1) ) , url(../img/composition_images-21.jpg);
+        } 
+        &--3
+        {
+            background: linear-gradient(to left top, #FFE53B , #FF2525 ) , url(../img/composition_images-31.jpg);         
+        }
+        &--1
+        {
+            background: linear-gradient(to left top,  rgba(0,201,235,1), rgba(145,0,228,1) ) , url(../img/composition_images-11.jpg);
+        }
+    }
+    .card__heading
+    {
+        font-size: 2rem;
+        position: absolute;
+        top: 16rem;
+        right: 1.3rem;
+        text-align: right;
+        .card__heading--span
+        {
+            padding:0.2rem 1.5rem;
+            color: $light-color;
+            border-radius: 3px;
+            display: inline-block;
+            text-transform: uppercase;
+            &--2
+            {
+                background:linear-gradient( to left top, rgba(198,239,146,0.85),  rgba(84, 122, 89,0.85) );              
+            }
+            &--3
+            {
+                background: linear-gradient(to left top, rgba(#FFE53B, 0.85) , rgba(#FF2525, 0.85));               
+            }
+            &--1
+            {
+                background: linear-gradient(to left top,  rgba(0,201,235,0.85), rgba(145,0,228,0.85) );
+               
+            }
+            
+            &--2-1
+            {
+                background:linear-gradient( to left top, rgba(198,239,146,0.85),  rgba(84, 122, 89,0.85) );
+               
+            }
+            &--3-1
+            {
+                background: linear-gradient(to left top, rgba(#FFE53B, 0.85) , rgba(#FF2525, 0.85));               
+            }
+            &--1-1
+            {
+                background: linear-gradient(to left top,  rgba(0,201,235,0.85), rgba(145,0,228,0.85) );
+               
+            }
+        }
+
+    }
+}
+.card__text
+{
+    ul
+    {
+        list-style: none;
+        width: 70%;
+        margin: 1rem auto;
+        li
+        {
+            color: $dark-color;
+                font-size: 1.4rem;
+                font-weight: 500;
+                text-align: center;
+                padding: 1.2rem ;
+            &:not(:last-child)
+            {                
+                border-bottom: solid rgba(0, 0, 0, 0.1)1px;
+            }
+            
+        }
+    }
+}
+
+//  back part style
+.card__side--back
+{
+    color:$light-color;
+    &--price
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 90%;
+        transform: translate(-50% ,-50%);
+        margin: auto;
+        text-align: center;
+        .price__box
+        {
+            font-size: 3rem;
+            font-weight: 400;
+
+            .price__amount
+            {
+                font-size: 5rem;
+            }            
+        }
+        .btn
+        {
+            margin-top: 8rem;
+            @include touch
+            {
+                margin-top: 3rem;
+            }
+
+        }
+   }
+}

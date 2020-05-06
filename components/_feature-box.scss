@@ -1,0 +1,25 @@
+
+.feature-box
+{    
+    background:$grey-color-1;  
+    min-height: 27rem;
+    border-radius: 5px;
+    padding: 3rem 2rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+    transition: all 0.25s;
+
+    @include respond(tab-p)
+    {
+        padding: 4rem 4rem;
+        min-height: 23rem;
+    }
+
+   
+
+    &:hover
+    {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.5);
+    }
+}
+
